@@ -27,6 +27,6 @@ app.post('/post', async (req,res)=>{
     res.send('success')
 })
 
-app.listen(5000,()=>{
+app.listen(8080,()=>{
     console.log('connect at 5000')
 })
