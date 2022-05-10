@@ -2,9 +2,7 @@ const { Firestore } = require('@google-cloud/firestore')
 const express = require('express')
 const app = express()
 const {nanoid} = require('nanoid')
-const bp = require('body-parser')
 
-app.use(bp.urlencoded({extended: true}))
 app.use(express.json())
 
 const firestore = new Firestore({
@@ -12,18 +10,19 @@ const firestore = new Firestore({
     keyFilename: 'parkir-yuk-349606-firebase-adminsdk-oc9q6-d0f5507e2a.json'
 })
 
-const db = firestore.collection('users')
+const db = firestore.collection(`'users'`)
 
 app.get('/',async (req,res)=>{
     const result = await db.get() 
     // res.send(result.docs.map(doc => doc.data()))
-    res.send('Hai :D')
+    res.send('tes')
 })
 
 app.post('/post', async (req,res)=>{
     const nama = req.body.nama
+    const doc = req.body.doc
 
-    await db.doc(`${nanoid(16)}`).set({
+    await db.doc(`awa`).set({
         name: nama,
         npm : 1
     })
