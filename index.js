@@ -1,4 +1,4 @@
-const {Firestore} = require('@google-cloud/firestore')
+const { Firestore } = require('@google-cloud/firestore')
 const express = require('express')
 const app = express()
 const {nanoid} = require('nanoid')
@@ -11,18 +11,21 @@ const firestore = new Firestore({
     projectId: 'parkir-yuk-349606',
     keyFilename: 'parkir-yuk-349606-firebase-adminsdk-oc9q6-d0f5507e2a.json'
 })
+
 const db = firestore.collection('users')
 
 app.get('/',async (req,res)=>{
-    const result = await db.get()
-    res.send(result.docs.map(doc => doc.data()))
+    const result = await db.get() 
+    // res.send(result.docs.map(doc => doc.data()))
+    res.send('Hai :D')
 })
 
 app.post('/post', async (req,res)=>{
     const nama = req.body.nama
 
     await db.doc(`${nanoid(16)}`).set({
-        name: nama
+        name: nama,
+        npm : 1
     })
     res.send('success')
 })
