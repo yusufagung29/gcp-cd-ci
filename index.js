@@ -14,8 +14,8 @@ const db = firestore.collection(`'users'`)
 
 app.get('/',async (req,res)=>{
     const result = await db.get() 
-    // res.send(result.docs.map(doc => doc.data()))
-    res.send('tes')
+    res.send(result.docs.map(doc => doc.data()))
+    // res.send('tes')
 })
 
 app.post('/post', async (req,res)=>{
